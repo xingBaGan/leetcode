@@ -1,0 +1,18 @@
+{
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.5.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test-c": "jest --coverage"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "dependencies": {
+    "typescript": "^4.1.3"
+  }
+}
