@@ -4,9 +4,9 @@
  * @param {type int} k 窗口大小
  */
 export default function maxNumsInWindow(nums: number[], k: number): any[] {
-    if (!nums) return [];
-    let maxNums = [];
     let len = nums.length;
+    if (!nums||!len) return [];
+    let maxNums = [];
     for (let i = 0; i <= len - k; i++) {
         let max = Number.MIN_SAFE_INTEGER;
         for (let j = 0; j < k; j++) {
