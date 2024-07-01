@@ -49,21 +49,3 @@ function minHeapify(arr: number[], n: number, i: number) {
   }
 }
 
-function prettyPrintHeap(arr: number[]) {
-  const n = arr.length;
-  // 将节点以 2 为底的对数可以算出他的level ,level 从零开始
-  const level = Math.ceil(Math.log2(n));
-  const maxLevel = level;
-  
-
-  for (let i = 0; i < maxLevel; i++) {
-    const levelWidth = Math.pow(2, i) - 1;
-    const levelHeight = Math.ceil(n / levelWidth);
-    const levelOffset = Math.pow(2, maxLevel - i - 1);
-
-    for (let j = 0; j < levelHeight; j++) {
-      const node = arr[j * levelWidth + levelOffset];
-
-    }
-  }
-}
