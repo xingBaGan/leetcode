@@ -1,34 +1,44 @@
-function partition(left: number, right: number, arr: number[]): number[] {
+
+import { swap } from "../utils";
+
+function partition(left: number, right: number, arr: number[]): [number, number] {
+    // less 为左边界index，more 为大区域的右边界index
+    // 不一定存在区域
     let less = left - 1;
     let more = right + 1;
-    let randomIndex = parseInt(String(Math.random() * (right - left + 1) + left));
-    [arr[randomIndex], arr[right]] = [arr[right], arr[randomIndex]];
-    let num = arr[right];
+    // convert float to interge
+    const pivotIndex = parseInt(String(Math.random() * (right - left + 1) + left));
+    swap(arr, pivotIndex, right);
+    const pivotValue = arr[right];
     for (let i = left; i < right && i < more; i++) {
-        if (arr[i] < num) {
-            [arr[less + 1], arr[i]] = [arr[i], arr[less + 1]];
+        if (arr[i] < pivotValue) {
+            swap(arr, less + 1, i);
             less++;
-        } else if (arr[i] === num) {
+        } else if (arr[i] === pivotValue) {
 
         } else {
-            [arr[i], arr[more - 1]] = [arr[more - 1], arr[i]]
+            swap(arr, more - 1, i);
             i--;
             more--;
         }
     }
+
     return [less, more];
 }
 
-function mutPartition(left: number, right: number, arr: number[]) {
+// 直接修改数组
+function multiPartition(left: number, right: number, arr: number[]) {
     if (left < right) {
-        let border: number[] = partition(left, right, arr);
-        mutPartition(left, border[0], arr);
-        mutPartition(border[1], right, arr);
+        const [less, more] = partition(left, right, arr);
+        multiPartition(left, less, arr);
+        multiPartition(more, right, arr);
     }
-
 }
+// 分治思想
+// 选择pivot，将数组变为，小分区，大分区。
+// 当选择的数量足够小时，该部分变为有序的
 export default function quickSort(arr: number[]) {
-    if (!arr || arr.length < 2) return;
-    mutPartition(0, arr.length - 1, arr);
+    if (arr.length <= 1) return arr;
+    multiPartition(0, arr.length - 1, arr);
     return arr;
 }
