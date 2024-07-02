@@ -6,14 +6,14 @@ function getParentIndex(index: number): number {
 
 function liftup(arr, index) {
   let parentIndex = getParentIndex(index);
-  while(arr[index] < arr[parentIndex]) {
+  while (arr[index] < arr[parentIndex]) {
     swap(arr, index, parentIndex);
     index = parentIndex;
     parentIndex = getParentIndex(index);
   }
 }
 
-export function buildMinHeapByInsert(arr: number[]){
+export function buildMinHeapByInsert(arr: number[]) {
   const n = arr.length;
   for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
     liftup(arr, i);
@@ -49,3 +49,17 @@ function minHeapify(arr: number[], n: number, i: number) {
   }
 }
 
+export function heap_sort(arr: number[]) {
+  const n = arr.length;
+  // 上升
+  for (let i = 1; i < n; i++) {
+    liftup(arr, i);
+  }
+  // i 表示要被排除的节点
+  for (let i = n - 1; i >=1 ; i--) {
+    swap(arr, 0, i);
+    minHeapify(arr, i, 0);
+  }
+  
+  return arr.reverse();
+}
