@@ -16,6 +16,7 @@ export function isValidSudoku(board: string[][]): boolean {
     
     function isValidArea(board:string[][],x1,y1,x2,y2):boolean{
         let times = new Array(9).fill(0);
+        //(0,0) (0,8)
         let i=x1,j=y1;
         while(i<=x2){
             while(j<=y2){

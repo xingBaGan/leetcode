@@ -21,7 +21,7 @@ function minHeapify(arr: number[], n: number, i: number) {
     smallest = right;
   }
 
-  if(smallest !== i) {
+  if (smallest !== i) {
     swap(arr, smallest, i);
     minHeapify(arr, n, smallest);
   }
@@ -69,6 +69,29 @@ export function buildMinHeapByLiftup(arr: number[]) {
   return arr;
 }
 
+function getParentIndex(index: number): number {
+  return Math.floor((index - 1) / 2)
+}
+
 function liftUp(arr: number[], i: number) {
-  
+  let parentIndex = getParentIndex(i);
+  while (arr[i] < arr[parentIndex]) {
+    swap(arr, i, parentIndex);
+    i = parentIndex;
+    parentIndex = getParentIndex(i);
+  }
+}
+
+
+export function heapSort(arr: number[]) {
+  const len = arr.length;
+  for (let i = 1; i < len; i++) {
+    liftUp(arr, i);
+  }
+  //i 表示要被排除的
+  for (let i = len - 1; i >= 1; i--) {
+    swap(arr, 0, i);
+    minHeapify(arr, i, 0);
+  }
+  return arr.reverse();
 }

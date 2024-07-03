@@ -3,7 +3,8 @@
     "build": "tsc",
     "test": "jest",
     "test-c": "jest --coverage",
-    "test:current": "npx jest --rootDir ."
+    "test:current": "npx jest --rootDir .",
+    "print:heap": "ts-node ./scripts/index.ts"
   },
   "jest": {
     "testEnvironment": "node"
