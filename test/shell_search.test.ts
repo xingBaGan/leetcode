@@ -1,4 +1,4 @@
-import shell_search from '../src/排序/shell_sort'
+import shell_search from '../src/排序/shell_sort_copy'
 import generateArr from '../src/utils/getRandomArray'
 test('10', () => {
     let input = generateArr(10, 1000)

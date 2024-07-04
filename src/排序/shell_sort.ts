@@ -10,6 +10,7 @@ export default function shell_sort(arr: number[]) {
                 }
             }
         }
+        // 为选组的大小
     } while (gap >>= 1);
     return arr
 }

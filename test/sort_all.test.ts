@@ -6,10 +6,11 @@ import {
     heap_sort,
     quick_sort,
     merge_sort,
-} from '../src/排序/sort'
+    shell_sort,
+} from '../src/排序/sort_all'
 import generateArr from '../src/utils/getRandomArray'
 
-const sort = quick_sort;
+const sort = shell_sort;
 describe('base', () => {
     test('10', () => {
         let input = generateArr(10, 100);

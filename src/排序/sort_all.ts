@@ -171,5 +171,25 @@ export function merge_sort(arr: number[]) {
 }
 
 export function shell_sort(arr: number[]) {
+    const len = arr.length;
+    if (len <= 1) return arr;
+    // gap 从 len/2 到 1
+    for (let gap = Math.floor(len / 2); gap >= 1; gap = Math.floor(gap / 2)) {
+        // groupStartIndex 表示每组起始下标
+        for (let groupStartIndex = 0; groupStartIndex < gap; groupStartIndex++) {
+            // currentIndex 表示要插入的
+            for (let currentIndex = groupStartIndex + gap; currentIndex < len; currentIndex += gap) {
+                const currentVal = arr[currentIndex];
+                let prevIndex = currentIndex - gap;
+                while (prevIndex >= groupStartIndex && arr[prevIndex] > currentVal) {
+                    // 腾出空位
+                    arr[prevIndex + gap] = arr[prevIndex];
+                    prevIndex -= gap;
+                }
+                // 找到空位坐下
+                arr[prevIndex + gap] = currentVal;
+            }
+        }
+    }
     return arr;
 }
