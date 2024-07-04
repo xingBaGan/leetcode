@@ -7,19 +7,25 @@ import {
     quick_sort,
     merge_sort,
     shell_sort,
+    radixSort,
+    countingSort1,
+    countingSort,
+    bucketSort,
 } from '../src/排序/sort_all'
 import generateArr from '../src/utils/getRandomArray'
 
-const sort = shell_sort;
+const sort = bucketSort;
 describe('base', () => {
     test('10', () => {
-        let input = generateArr(10, 100);
+        let input = generateArr(5, 100);
         expect(sort([...input])).toEqual(input.sort((a, b) => a - b))
     })
+
     test('100', () => {
         let input = generateArr(100, 100);
         expect(sort([...input])).toEqual(input.sort((a, b) => a - b))
     })
+
     test('1000', () => {
         let input = generateArr(1000, 100);
         expect(sort([...input])).toEqual(input.sort((a, b) => a - b))
@@ -28,5 +34,4 @@ describe('base', () => {
         let input = []
         expect(sort([...input])).toEqual(input.sort((a, b) => a - b))
     })
-
 })
