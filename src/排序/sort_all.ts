@@ -272,7 +272,6 @@ export function bucketSort(arr, bucketSize = 5) {
     if (len <= 1) return arr;
     const max = Math.max(...arr);
     const min = Math.min(...arr);
-    const range = max - min + 1;
 
     // 初始化桶
     const bucketCount = Math.floor(((max - min) / bucketSize) + 1);
